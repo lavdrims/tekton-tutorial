@@ -7,8 +7,10 @@ FROM docker.io/library/golang:1.16 as builder
 WORKDIR /go/src/github.com/IBM/tekton-tutorial
 COPY picalc.go picalc_test.go .
 
-# Run unit tests
+#  Create a go.mod file to track code's dependencies
 RUN go mod init
+
+# Run unit tests
 RUN CGO_ENABLED=0 GOOS=linux go test
 
 # Build the code inside the container.
