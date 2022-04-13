@@ -8,6 +8,7 @@ WORKDIR /go/src/github.com/IBM/tekton-tutorial
 COPY picalc.go picalc_test.go .
 
 # Run unit tests
+RUN go mod init
 RUN CGO_ENABLED=0 GOOS=linux go test
 
 # Build the code inside the container.
